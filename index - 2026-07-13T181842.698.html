@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кар'єрний компас · Оксана</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2b2320;
+    --paper:#fbeef1;
+    --paper-alt:#f6e0e6;
+    --panel:#fffbfa;
+    --pink:#c2255c;
+    --pink-deep:#8e1a49;
+    --plum:#6b3f56;
+    --line:rgba(43,35,32,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 28px;}
+
+  .rule{width:100%; height:1px; background:var(--line); margin:0;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,238,241,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 28px; font-family:var(--mono); font-size:12.5px;}
+  nav .brand{font-family:var(--display); font-size:17px; font-style:italic; color:var(--pink-deep);}
+  nav ul{list-style:none; display:flex; gap:20px; margin:0; padding:0; flex-wrap:wrap;}
+  nav a{text-decoration:none; opacity:0.7;}
+  nav a:hover{opacity:1; text-decoration:underline;}
+
+  header.hero{background:var(--pink-deep); color:var(--paper); padding:56px 0 0 0;}
+  .hero-inner{display:flex; gap:36px; align-items:center; flex-wrap:wrap;}
+  .hero-photo{width:168px; height:168px; border-radius:50%; object-fit:cover; border:4px solid rgba(251,238,241,0.5); flex-shrink:0;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.65; margin-bottom:14px;}
+  h1.title{font-family:var(--display); font-weight:600; font-size:clamp(32px,5.5vw,52px); line-height:1.06; margin:0 0 14px 0;}
+  .lede{max-width:56ch; font-size:16px; opacity:0.92; margin-bottom:0;}
+  .stat-row{display:flex; flex-wrap:wrap; border-top:1px solid rgba(251,238,241,0.25); margin-top:30px;}
+  .stat{flex:1 1 150px; padding:16px 20px; border-right:1px solid rgba(251,238,241,0.25); border-bottom:1px solid rgba(251,238,241,0.25);}
+  .stat .k{font-family:var(--mono); font-size:11px; letter-spacing:0.05em; text-transform:uppercase; opacity:0.6; display:block; margin-bottom:5px;}
+  .stat .v{font-size:14.5px; font-weight:500;}
+
+  section{padding:52px 0;}
+  section.alt{background:var(--paper-alt);}
+  .section-label{font-family:var(--mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--pink); margin-bottom:8px; display:flex; align-items:center; gap:10px;}
+  .section-label::before{content:""; width:20px; height:2px; background:var(--pink); display:inline-block;}
+  h2{font-family:var(--display); font-weight:600; font-size:clamp(24px,4vw,34px); margin:0 0 16px 0; line-height:1.12;}
+  .section-intro{max-width:62ch; opacity:0.85; margin-bottom:26px; font-size:15px;}
+
+  .paths{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:760px){.paths{grid-template-columns:1fr;}}
+  .path-card{background:var(--panel); border:1px solid var(--line); overflow:hidden;}
+  .path-card .path-head{padding:18px 22px; color:var(--paper);}
+  .path-card.a .path-head{background:var(--pink);}
+  .path-card.b .path-head{background:var(--plum);}
+  .path-eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; opacity:0.85; margin-bottom:5px;}
+  .path-head h3{margin:0; font-family:var(--display); font-size:20px; font-weight:600;}
+  .path-body{padding:20px 22px;}
+  .path-body p{font-size:14px; opacity:0.88; margin:0 0 14px 0;}
+  .variant{background:var(--paper-alt); border-left:3px solid var(--pink); padding:10px 14px; font-size:13px;}
+  .path-card.b .variant{border-left-color:var(--plum);}
+  .variant b{font-family:var(--mono); font-size:11px; text-transform:uppercase; display:block; margin-bottom:3px; opacity:0.7;}
+
+  .ikigai{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:22px;}
+  @media(max-width:700px){.ikigai{grid-template-columns:1fr;}}
+  .ikigai .c{background:var(--panel); border:1px solid var(--line); padding:16px 18px;}
+  .ikigai .c h5{margin:0 0 8px 0; font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--pink-deep);}
+  .ikigai .c p{margin:0; font-size:13.8px; opacity:0.88;}
+  .ikigai-center{background:var(--pink-deep); color:var(--paper); padding:18px 22px; font-family:var(--display); font-style:italic; font-size:16.5px; line-height:1.5;}
+
+  .swot{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media(max-width:700px){.swot{grid-template-columns:1fr;}}
+  .swot .box{background:var(--panel); border:1px solid var(--line); padding:18px 20px;}
+  .swot h4{margin:0 0 10px 0; font-family:var(--display); font-size:18px;}
+  .swot ul{margin:0; padding-left:18px; font-size:13.8px;}
+  .swot li{margin-bottom:7px;}
+
+  .offers{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;}
+  .offer{background:var(--panel); border:1px solid var(--line); padding:22px 20px; display:flex; flex-direction:column;}
+  .offer.featured{background:var(--pink-deep); color:var(--paper); border-color:var(--pink-deep);}
+  .offer h4{font-family:var(--display); font-size:18.5px; margin:0 0 4px 0;}
+  .offer .price{font-family:var(--mono); font-size:23px; margin:8px 0 2px 0;}
+  .offer .unit{font-family:var(--mono); font-size:11.5px; opacity:0.6; margin-bottom:14px;}
+  .offer ul{margin:0; padding-left:18px; font-size:13.2px; flex-grow:1;}
+  .offer li{margin-bottom:7px;}
+
+  .mentor-weeks{display:flex; flex-direction:column; margin-bottom:22px;}
+  .mweek{display:flex; gap:20px; padding:16px 0; border-bottom:1px dashed var(--line); align-items:baseline;}
+  .mweek:last-child{border-bottom:none;}
+  .mnum{font-family:var(--mono); font-size:12px; text-transform:uppercase; color:var(--pink-deep); flex:0 0 100px;}
+  .mtext{font-size:14px; opacity:0.9;}
+  .mtext b{font-family:var(--display); font-style:italic; font-weight:600; opacity:1;}
+  .mentor-result{background:var(--panel); border:1px solid var(--line); padding:16px 20px; font-size:14px; margin-bottom:20px;}
+  .mentor-price{font-family:var(--mono); font-size:24px; color:var(--pink-deep);}
+
+  footer{background:var(--pink-deep); color:var(--paper); padding:44px 0 34px 0; text-align:center;}
+  footer h2{font-family:var(--display); font-style:italic; font-weight:500; margin-bottom:6px;}
+  footer p.sub{opacity:0.7; font-size:14px; margin-bottom:22px;}
+  footer .signature{font-family:var(--mono); font-size:12px; opacity:0.55;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Кар'єрний компас</span>
+    <ul>
+      <li><a href="#hero">Знайомство</a></li>
+      <li><a href="#paths">Шляхи</a></li>
+      <li><a href="#ikigai">Ікігай</a></li>
+      <li><a href="#swot">SWOT</a></li>
+      <li><a href="#offer">Послуги</a></li>
+      <li><a href="#mentor">Менторство</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <img class="hero-photo" src="oksana.jpg" alt="Оксана Білич">
+      <div>
+        <div class="eyebrow">Кар'єрний компас · Розбір</div>
+        <h1 class="title">Оксана шукає новий напрямок</h1>
+        <p class="lede">43 роки, Київ. За освітою юристка, хоча юристом не працювала — досвід зібраний у пошті, поліції, пенсійному фонді, міській раді, торгівлі. Шити почала самостійно під час війни, зараз завершує вже другий курс — з пошиття одягу для собак — і хоче побудувати на цьому власну справу.</p>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><span class="k">Освіта</span><span class="v">Юридична — за фахом не працювала</span></div>
+      <div class="stat"><span class="k">Досвід роботи</span><span class="v">Пошта, поліція, пенсійний фонд, міська рада, торгівля — повертатись туди не хоче</span></div>
+      <div class="stat"><span class="k">Зараз</span><span class="v">Самостійно навчилась шити під час війни, завершує другий курс — одяг для собак; вже є періодичний підробіток у знайомого</span></div>
+      <div class="stat"><span class="k">Формат роботи</span><span class="v">Тільки дистанційно — офлайн виключено: обмежений час і стан здоров'я</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="rule"></div>
+
+<section id="paths">
+  <div class="wrap">
+    <div class="section-label">Два шляхи</div>
+    <h2>Куди можна рухатись</h2>
+    <p class="section-intro">Пошиття фізично не витягнути як роботу на виробництві — норми цеху не пройшли перевірку на практиці. Тож два шляхи розведені чітко: найм — це HR і кадри, справа — це пошиття.</p>
+    <div class="paths">
+      <div class="path-card a">
+        <div class="path-head">
+          <div class="path-eyebrow">Шлях A</div>
+          <h3>Робота за наймом: HR / рекрутинг</h3>
+        </div>
+        <div class="path-body">
+          <p>Роки досвіду в кадрах і документообігу — це фактично основа HR-роботи, тільки її треба апгрейднути: курс з HR/рекрутингу (3–6 місяців), впевнені Google Таблиці й AI-інструменти, профіль на LinkedIn.</p>
+          <div class="variant"><b>Варіант</b>Дистанційний фриланс у HR — без прив'язки до офісу й без англійської. Класичний рекрутинг в ІТ вимагає мову, але поза ІТ таких вакансій багато; графік плануєш сама.</div>
+        </div>
+      </div>
+      <div class="path-card b">
+        <div class="path-head">
+          <div class="path-eyebrow">Шлях B</div>
+          <h3>Власна справа: одяг для собак + подушки</h3>
+        </div>
+        <div class="path-body">
+          <p>Вже є перша домовленість — Марина Кучеренко виставляє готові речі на своєму місці на ринку. Паралельно — подушки різних видів: той самий матеріал іде на обидва напрямки.</p>
+          <div class="variant"><b>Варіант</b>Дві лінії продажів: готові вироби на комісії в зоомагазинах (~30% магазину, потрібен список точок і комерційна пропозиція) та індивідуальні замовлення за мірками.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="alt" id="ikigai">
+  <div class="wrap">
+    <div class="section-label">Ікігай</div>
+    <h2>Де перетинаються твої відповіді</h2>
+    <div class="ikigai">
+      <div class="c"><h5>Любиш</h5><p>Шити, брати індивідуальний виклик, моделювати щось нове від початку до кінця.</p></div>
+      <div class="c"><h5>Вмієш добре</h5><p>Кадри й документообіг — багаторічний досвід. Шити — самостійно освоєний з нуля навик, не боїшся починати нове.</p></div>
+      <div class="c"><h5>Світу потрібно</h5><p>Компаніям потрібні HR-фахівці для дистанційних процесів; власникам тварин — якісний одяг і аксесуари.</p></div>
+      <div class="c"><h5>За це платять</h5><p>Дистанційний фриланс у HR/рекрутингу; продаж одягу для тварин через комісію в зоомагазинах та індивідуальні замовлення.</p></div>
+    </div>
+    <div class="ikigai-center">✦ На перетині — HR-робота у форматі, який ти плануєш сама, і власна справа, що вже має першу точку збуту.</div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section id="swot">
+  <div class="wrap">
+    <div class="section-label">SWOT</div>
+    <h2>Можливості й загрози</h2>
+    <div class="swot">
+      <div class="box">
+        <h4>Можливості</h4>
+        <ul>
+          <li>Багаторічний досвід у кадрах і документообігу — готова база для переходу в HR</li>
+          <li>Вже є домовленість про збут (Марина Кучеренко) і план консигнації для зоомагазинів</li>
+          <li>Періодичний підробіток у знайомого — вже є практика паралельного заробітку</li>
+          <li>Готовність вчитися новому й не боятися ризикувати — почала свою справу під час війни</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Загрози</h4>
+        <ul>
+          <li>Без апгрейду навичок (Google Таблиці, LinkedIn, AI-інструменти) перехід у HR не відбудеться</li>
+          <li>Класичний рекрутинг в ІТ вимагає англійську — тож підходить лише фриланс-формат поза ІТ</li>
+          <li>Instagram і Facebook поки безладні — заважають рекламі й продажам</li>
+          <li>Стан здоров'я й обмежений час виключають офлайн-роботу та цеховий графік</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="alt" id="offer">
+  <div class="wrap">
+    <div class="section-label">Що далі?</div>
+    <h2>Варіанти продовжити</h2>
+    <div class="offers">
+      <div class="offer">
+        <h4>Резюме з нуля</h4>
+        <div class="price">400 грн</div>
+        <div class="unit">без нього не рушить шлях A</div>
+        <ul>
+          <li>Резюме з нуля українською</li>
+          <li>Акцент на досвід кадрів і документообігу, під HR-напрямок</li>
+        </ul>
+      </div>
+      <div class="offer">
+        <h4>Резюме + персональна карта розбору</h4>
+        <div class="price">1 000 грн</div>
+        <div class="unit">резюме + готовий документ</div>
+        <ul>
+          <li>Резюме з нуля українською, з акцентом на кадровий досвід під HR-напрямок</li>
+          <li>Твій особистий SWOT-аналіз</li>
+          <li>Твій ікігай — на перетині навички, любові, потреби ринку й оплати</li>
+          <li>Оформлено в один документ, який лишається у тебе</li>
+        </ul>
+      </div>
+      <div class="offer featured">
+        <h4>Бізнес-план + сайт + карта дій</h4>
+        <div class="price">3 900 грн</div>
+        <div class="unit">повний запуск власної справи</div>
+        <ul>
+          <li>Бізнес-план з реальними розрахунками: пакування, бірки, візитки, тканини, реклама</li>
+          <li>Сайт-портфоліо для реклами й показу зоомагазинам</li>
+          <li>Карта дій з чіткими кроками та дедлайнами</li>
+          <li>Комерційна пропозиція (КП) для зоомагазинів на комісійних умовах</li>
+          <li>Особисте представлення на переговорах із зоомагазинами</li>
+          <li>Менторський супровід на весь період запуску</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="alt" id="mentor">
+  <div class="wrap">
+    <div class="section-label">Менторська підтримка</div>
+    <h2>Далі — щомісячний супровід, а не одна розмова</h2>
+    <p class="section-intro">Після карти дій — формат, який тримає обидва напрямки в русі: 4 дзвінки по 45 хв, раз на тиждень, + відповіді в Telegram між дзвінками протягом доби. Кожен тиждень — своя задача.</p>
+    <div class="mentor-weeks">
+      <div class="mweek">
+        <div class="mnum">Тиждень 1</div>
+        <div class="mtext"><b>Ревізія старту.</b> Резюме в роботі під HR-напрямок; складений список зоомагазинів міста для комерційної пропозиції.</div>
+      </div>
+      <div class="mweek">
+        <div class="mnum">Тиждень 2</div>
+        <div class="mtext"><b>Перші контакти.</b> Перші відгуки на HR-вакансії чи фриланс-проєкти; перша комерційна пропозиція надіслана в зоомагазин.</div>
+      </div>
+      <div class="mweek">
+        <div class="mnum">Тиждень 3</div>
+        <div class="mtext"><b>Розбір результатів.</b> Фідбек і коригування самопрезентації; підтвердження першої точки продажу чи домовленість про зустріч.</div>
+      </div>
+      <div class="mweek">
+        <div class="mnum">Тиждень 4</div>
+        <div class="mtext"><b>Підсумок місяця.</b> Що спрацювало, що ні; чіткий план дій на наступний місяць для обох шляхів.</div>
+      </div>
+    </div>
+    <div class="mentor-result">
+      <b>Результат наприкінці місяця:</b> резюме в активному пошуку, перший підтверджений контакт із зоомагазином або клієнтом, і план на наступний місяць — а не абстрактне «стало легше».
+    </div>
+    <div class="mentor-price">4 зустрічі × 700 грн = 2 800 грн / місяць</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Оксано, обидва шляхи вже в твоїх руках.</h2>
+    <p class="sub">Лишається обрати перший крок.</p>
+    <div class="signature">Кар'єрний компас</div>
+  </div>
+</footer>
+
+</body>
+</html>
